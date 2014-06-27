@@ -14,6 +14,10 @@ this.addEventListener('fetch', function (event) {
     event.respondWith(
         caches
             .match('org-1', event.request)
-            .catch(fetch)
+            .then(function (res) {
+                console.log('SW!', res);
+                return res;
+            })
+            .catch(event.default.bind(event))
     );
 });
