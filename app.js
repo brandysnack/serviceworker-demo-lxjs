@@ -23,11 +23,14 @@ if ((!location.port || location.port == "80") && location.protocol != 'https:') 
   }
 
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/serviceworker-demo-lxjs/worker.js', {
-      scope: '/serviceworker-demo-lxjs/*'
-    }).then(function () {
-        console.log('sw installed');
-    }, fail)
+    navigator.serviceWorker
+        .register('/serviceworker-demo-lxjs/worker.js', {
+            scope: '/serviceworker-demo-lxjs/*'
+        })
+        .then(function () {
+            console.log('sw installed');
+        })
+        .catch(fail);
 }
 
 var $members = $('.members');
